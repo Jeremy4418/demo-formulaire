@@ -121,23 +121,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
 .recap-k{color:var(--muted)}
 .recap-v{font-weight:500;text-align:right}
 
-/* RESULT */
-.result{display:none;text-align:center;padding:14px 0 36px;animation:up .8s ease both}
-.result.active{display:block}
-.r-icon{width:64px;height:64px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 18px}
-.r-title{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:9px}
-.r-sub{color:var(--muted);font-size:13px;line-height:1.7;max-width:400px;margin:0 auto 24px}
-.r-cards{display:grid;gap:9px;margin-bottom:24px;text-align:left}
-.r-card{background:var(--d2);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:13px 16px;display:flex;align-items:flex-start;gap:11px}
-.r-card-ico{width:32px;height:32px;background:rgba(201,168,76,.1);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:1px}
-.r-card-txt{font-size:12px;line-height:1.5}
-.r-card-lbl{color:var(--muted);font-size:10px;margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px}
-.price-box{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.25);border-radius:8px;padding:22px;margin-bottom:16px}
-.price-lbl{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
-.price-amt{font-family:'Playfair Display',serif;font-size:40px;color:var(--gold);line-height:1;margin-bottom:3px}
-.price-desc{font-size:12px;color:var(--muted)}
-.price-strike{font-size:12px;color:var(--muted);text-decoration:line-through;margin-bottom:5px}
-
 /* ERRORS */
 .err{color:#FF6B6B;font-size:11px;margin-top:4px;display:none}
 .field.error input,.field.error select,.field.error textarea{border-color:#FF6B6B}
@@ -148,8 +131,8 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
 .loading.active{display:block}
 .spinner{width:36px;height:36px;border:2px solid rgba(201,168,76,.2);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 14px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.loading-txt{font-size:13px;color:var(--muted)}
 
+.loading-txt{font-size:13px;color:var(--muted)}
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
 @media(max-width:480px){.card{padding:20px 16px}.choices.g2,.pgrid,.row2,.row3{grid-template-columns:1fr}.stats{gap:16px}h1{font-size:22px}}
@@ -158,9 +141,7 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
 <body>
 <div class="wrap">
 
-<!-- HEADER -->
 <div class="hdr">
-  <div style="background:rgba(26,82,118,.15);border:1px solid rgba(26,82,118,.3);color:#5B9BD5;font-size:11px;font-weight:500;padding:6px 16px;border-radius:100px;display:inline-block;margin-bottom:16px;letter-spacing:.5px">👁️ MODE DÉMONSTRATION — Aperçu du formulaire</div>
   <div class="badge">Diagnostic complet · Rapport sous 24h · 75€</div>
   <h1>Optimisez votre<br><em>achat immobilier</em></h1>
   <p class="subtitle">Analyse complète de vos aides, de votre viabilité bancaire et de votre fiscalité immobilière. Rapport PDF personnalisé envoyé sous 24 heures.</p>
@@ -177,13 +158,10 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   </div>
 </div>
 
-<!-- PROGRESS -->
 <div class="prog-bar"><div class="prog-fill" id="pFill" style="width:9%"></div></div>
 <div class="prog-txt"><span class="prog-step" id="pLabel">Étape 1 sur 11</span><span id="pPct">9%</span></div>
 
-<form id="mainForm" action="https://formspree.io/f/VOTRE_CODE_FORMSPREE" method="POST">
-
-<!-- HIDDEN FIELDS pour Formspree -->
+<form id="mainForm" action="https://formspree.io/f/xdapgege" method="POST">
 <input type="hidden" name="_subject" value="Nouveau diagnostic immobilier — Jérémy Picard">
 <input type="hidden" name="_next" value="https://buy.stripe.com/bJedR932l4x65WK5v66Ri00">
 <input type="hidden" name="taux_endettement" id="h_taux">
@@ -192,7 +170,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
 
 <div id="fWrap">
 
-<!-- STEP 1 : Identité -->
 <div class="card step active" id="s1">
   <div class="snum">01 — Identité</div>
   <div class="stitle">Qui êtes-vous ?</div>
@@ -206,7 +183,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   <div class="btn-row"><button type="button" class="btn" onclick="nxt(1)">Continuer →</button></div>
 </div>
 
-<!-- STEP 2 : Primo -->
 <div class="card step" id="s2">
   <div class="snum">02 — Statut</div>
   <div class="stitle">Êtes-vous primo-accédant ?</div>
@@ -218,7 +194,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   <div class="btn-row"><button type="button" class="btn-back" onclick="prv(2)">← Retour</button><button type="button" class="btn" onclick="nxt(2)">Continuer →</button></div>
 </div>
 
-<!-- STEP 3 : Projet -->
 <div class="card step" id="s3">
   <div class="snum">03 — Votre projet</div>
   <div class="stitle">Quel est votre projet immobilier ?</div>
@@ -247,7 +222,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   <div class="btn-row"><button type="button" class="btn-back" onclick="prv(3)">← Retour</button><button type="button" class="btn" onclick="nxt(3)">Continuer →</button></div>
 </div>
 
-<!-- STEP 4 : Profession -->
 <div class="card step" id="s4">
   <div class="snum">04 — Profession</div>
   <div class="stitle">Votre situation professionnelle</div>
@@ -264,10 +238,9 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
     <div class="pch" data-v="independant" onclick="selP(this)"><span class="pico">⚡</span><span class="plbl">Indépendant / TNS</span><span class="psub">Auto-entrepreneur, gérant</span></div>
   </div>
   <div style="font-size:11px;color:var(--gold);margin-top:6px;margin-bottom:2px;letter-spacing:.5px">
-    💡 Foyer avec 2 métiers différents ? Sélectionnez les deux — les aides se cumulent !
+    💡 Foyer avec 2 métiers différents ? Sélectionnez les deux — les aides se cumulent.
   </div>
 
-  <!-- Contrat emprunteur 1 — toujours visible -->
   <div class="row2" style="margin-top:14px" id="contratBlock1">
     <div class="field"><label id="contratLbl1">Type de contrat <span>*</span></label>
       <select name="contrat" id="contrat">
@@ -290,7 +263,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
     </div>
   </div>
 
-  <!-- Contrat emprunteur 2 — visible si 2 professions sélectionnées -->
   <div class="row2" style="margin-top:8px;display:none" id="contratBlock2">
     <div class="field"><label id="contratLbl2">Type de contrat — Co-emprunteur <span>*</span></label>
       <select name="contrat2" id="contrat2">
@@ -315,7 +287,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   <div class="btn-row"><button type="button" class="btn-back" onclick="prv(4)">← Retour</button><button type="button" class="btn" onclick="nxt(4)">Continuer →</button></div>
 </div>
 
-<!-- STEP 5 : Revenus -->
 <div class="card step" id="s5">
   <div class="snum">05 — Revenus et foyer</div>
   <div class="stitle">Votre situation financière</div>
@@ -346,7 +317,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
     </div>
   </div>
 
-  <!-- Revenus N-2 dynamique selon nb emprunteurs -->
   <div id="revN2Block">
     <div class="field" id="revN2Field1">
       <label>Revenus annuels N-2 — Emprunteur 1 <span>*</span><small>(ligne 25 avis d'imposition)</small></label>
@@ -377,7 +347,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   <div class="btn-row"><button type="button" class="btn-back" onclick="prv(5)">← Retour</button><button type="button" class="btn" onclick="nxt(5)">Continuer →</button></div>
 </div>
 
-<!-- STEP 6 : Apport et épargne -->
 <div class="card step" id="s6">
   <div class="snum">06 — Apport et épargne</div>
   <div class="stitle">Votre patrimoine disponible</div>
@@ -412,7 +381,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   <div class="btn-row"><button type="button" class="btn-back" onclick="prv(6)">← Retour</button><button type="button" class="btn" onclick="nxt(6)">Continuer →</button></div>
 </div>
 
-<!-- STEP 7 : Crédits en cours -->
 <div class="card step" id="s7">
   <div class="snum">07 — Crédits en cours</div>
   <div class="stitle">Avez-vous des crédits en cours ?</div>
@@ -445,7 +413,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   <div class="btn-row"><button type="button" class="btn-back" onclick="prv(7)">← Retour</button><button type="button" class="btn" onclick="nxt(7)">Continuer →</button></div>
 </div>
 
-<!-- STEP 8 : Comportement bancaire -->
 <div class="card step" id="s8">
   <div class="snum">08 — Comportement bancaire</div>
   <div class="stitle">Incidents de paiement</div>
@@ -467,7 +434,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   <div class="btn-row"><button type="button" class="btn-back" onclick="prv(8)">← Retour</button><button type="button" class="btn" onclick="nxt(8)">Continuer →</button></div>
 </div>
 
-<!-- STEP 9 : Fiscalité -->
 <div class="card step" id="s9">
   <div class="snum">09 — Fiscalité immobilière</div>
   <div class="stitle">Votre situation fiscale</div>
@@ -521,7 +487,6 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   <div class="btn-row"><button type="button" class="btn-back" onclick="prv(9)">← Retour</button><button type="button" class="btn" onclick="nxt(9)">Continuer →</button></div>
 </div>
 
-<!-- STEP 10 : Situations particulières -->
 <div class="card step" id="s10">
   <div class="snum">10 — Situations particulières</div>
   <div class="stitle">Situations spécifiques</div>
@@ -540,50 +505,24 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   <div class="btn-row"><button type="button" class="btn-back" onclick="prv(10)">← Retour</button><button type="button" class="btn" onclick="nxt(10)">Continuer →</button></div>
 </div>
 
-<!-- STEP 11 : Confirmation -->
 <div class="card step" id="s11">
   <div class="snum">11 — Confirmation</div>
   <div class="stitle">Vérifiez vos informations</div>
   <div class="sdesc">Avant d'envoyer votre demande de rapport.</div>
   <div class="recap-box" id="recapBox"></div>
   <div class="ibox">🔒 <strong>Données confidentielles.</strong> Utilisées uniquement pour produire votre rapport. Jamais partagées avec des tiers. Conformément au RGPD.</div>
-  <div class="btn-row"><button type="button" class="btn-back" onclick="prv(11)">← Retour</button><button type="button" class="btn" onclick="showDemoResult()">Voir un aperçu du rapport →</button></div>
+  <div class="btn-row">
+    <button type="button" class="btn-back" onclick="prv(11)">← Retour</button>
+    <button type="submit" class="btn">Envoyer et passer au paiement →</button>
+  </div>
 </div>
 
-</div><!-- fin fWrap -->
+</div>
 
-<!-- LOADING -->
 <div class="loading" id="loadingScreen">
   <div class="spinner"></div>
-  <div class="loading-txt">Envoi de votre diagnostic en cours...</div>
+  <div class="loading-txt">Envoi du formulaire en cours...</div>
 </div>
-
-<!-- RÉSULTAT -->
-<div class="result" id="resultScreen">
-  <div class="r-icon">👁️</div>
-  <div class="r-title">Aperçu du diagnostic</div>
-  <p class="r-sub">Voici un résumé de ce que vous avez renseigné. Votre rapport complet et personnalisé sera généré et envoyé par email sous 24 heures après paiement.</p>
-  <div class="r-cards" id="rCards"></div>
-
-  <div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.25);border-radius:8px;padding:22px;margin-bottom:16px;text-align:center">
-    <div style="font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">Ce que vous recevrez dans votre rapport</div>
-    <div style="font-size:13px;color:var(--text);line-height:1.8;margin-bottom:16px;text-align:left">
-      ✓ Score d'éligibilité sur 100<br>
-      ✓ Toutes les aides identifiées avec les montants<br>
-      ✓ Analyse bancaire complète — taux d'endettement, mensualité, capacité<br>
-      ✓ Analyse fiscale immobilière<br>
-      ✓ Numéros directs des organismes de votre département<br>
-      ✓ Plan d'action personnalisé en 5 étapes
-    </div>
-    <div style="font-size:36px;font-weight:500;color:var(--gold);font-family:'Playfair Display',serif;margin-bottom:4px">75€</div>
-    <div style="font-size:12px;color:var(--muted);margin-bottom:18px">Paiement unique · PDF livré sous 24h · Satisfait ou remboursé 48h</div>
-    <a href="https://buy.stripe.com/bJedR932l4x65WK5v66Ri00" style="display:block;background:var(--gold);color:var(--dark);border-radius:4px;padding:14px 24px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;text-decoration:none;letter-spacing:.3px">Payer et recevoir mon rapport →</a>
-    <div style="font-size:11px;color:var(--muted);margin-top:10px">Paiement sécurisé via Stripe · CB, Apple Pay, Google Pay</div>
-  </div>
-
-  <button onclick="resetDemo()" style="width:100%;background:none;border:1px solid rgba(255,255,255,.1);color:var(--muted);border-radius:4px;padding:10px;font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;margin-top:4px">← Recommencer le diagnostic</button>
-</div>
-
 </form>
 
 <div class="trust">
@@ -594,21 +533,31 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   <div class="ti">SIRET 91128258000024</div>
 </div>
 
-</div><!-- fin wrap -->
+</div>
 
 <script>
 const TOTAL=11;
 let step=1;
-let fd={budget:180000,rev:2500,revN2:30000,apport:20000,epargne:5000,credits:0,capital:0,loyer:600};
+let fd={
+  budget:180000,
+  rev:2500,
+  revN2:60000,
+  apport:20000,
+  epargne:5000,
+  credits:0,
+  capital:0,
+  loyer:600
+};
 
 function updEmprunteurs(){
   const nb=parseInt(document.getElementById('foyer').value)||1;
   const f2=document.getElementById('revN2Field2');
   const lbl1=document.querySelector('#revN2Field1 label');
+
   if(nb>=2){
     f2.style.display='block';
     lbl1.innerHTML='Revenus annuels N-2 — Emprunteur 1 <span>*</span><small>(ligne 25 avis d\'imposition)</small>';
-  } else {
+  }else{
     f2.style.display='none';
     lbl1.innerHTML='Revenus annuels N-2 <span>*</span><small>(ligne 25 avis d\'imposition)</small>';
     document.getElementById('revN2_2').value=0;
@@ -631,7 +580,7 @@ function updProg(s){
 }
 
 function updR(id,lblId,unit){
-  const v=parseInt(document.getElementById(id).value);
+  const v=parseInt(document.getElementById(id).value)||0;
   fd[id]=v;
   document.getElementById(lblId).innerHTML=v.toLocaleString('fr-FR')+' <span>'+unit+'</span>';
 }
@@ -640,9 +589,14 @@ function sel(gId,el){
   document.getElementById(gId).querySelectorAll('.ch').forEach(c=>c.classList.remove('sel'));
   el.classList.add('sel');
   fd[gId]=el.dataset.v;
-  // Sync hidden input
+
   let inp=document.querySelector(`input[name="${gId}"]`);
-  if(!inp){inp=document.createElement('input');inp.type='hidden';inp.name=gId;document.getElementById('mainForm').appendChild(inp);}
+  if(!inp){
+    inp=document.createElement('input');
+    inp.type='hidden';
+    inp.name=gId;
+    document.getElementById('mainForm').appendChild(inp);
+  }
   inp.value=el.dataset.v;
 }
 
@@ -650,23 +604,30 @@ function selP(el){
   el.classList.toggle('sel');
   const selected=Array.from(document.querySelectorAll('.pch.sel')).map(c=>c.dataset.v);
   fd.statut=selected.join(',');
+
   let inp=document.querySelector('input[name="statut"]');
-  if(!inp){inp=document.createElement('input');inp.type='hidden';inp.name='statut';document.getElementById('mainForm').appendChild(inp);}
+  if(!inp){
+    inp=document.createElement('input');
+    inp.type='hidden';
+    inp.name='statut';
+    document.getElementById('mainForm').appendChild(inp);
+  }
   inp.value=fd.statut;
 
-  // Afficher/masquer bloc contrat co-emprunteur selon nb professions
-  const nb=selected.length;
   const bloc2=document.getElementById('contratBlock2');
   const lbl1=document.getElementById('contratLbl1');
   const anc1=document.getElementById('anciennLbl1');
-  if(nb>=2){
+
+  if(selected.length>=2){
     bloc2.style.display='flex';
     lbl1.innerHTML='Type de contrat — Emprunteur 1 <span>*</span>';
     anc1.textContent='Ancienneté — Emprunteur 1';
-  } else {
+  }else{
     bloc2.style.display='none';
     lbl1.innerHTML='Type de contrat <span>*</span>';
-    anc1.textContent='Ancienneté actuelle';
+    anc1.textContent='Ancienneté';
+    document.getElementById('contrat2').value='';
+    document.getElementById('anciennete2').value='moins1';
   }
 }
 
@@ -678,21 +639,31 @@ function calcTaux(){
   const montant=Math.max(0,budget-apport);
   const tm=3.5/100/12;
   const dur=240;
-  const mens=montant*(tm*Math.pow(1+tm,dur))/(Math.pow(1+tm,dur)-1);
+
+  let mens=0;
+  if(montant>0){
+    mens=montant*(tm*Math.pow(1+tm,dur))/(Math.pow(1+tm,dur)-1);
+  }
+
   const total=credits+mens;
-  const taux=Math.round(total/rev*100);
+  const taux=rev>0?Math.round(total/rev*100):0;
+  const capaciteMensuelle=rev*0.35;
+  let capacite=0;
+  if(capaciteMensuelle>0){
+    capacite=Math.round(capaciteMensuelle/(tm*Math.pow(1+tm,dur)/(Math.pow(1+tm,dur)-1)));
+  }
+
   fd.tauxEndettement=taux;
   fd.mensualite=Math.round(mens);
-  fd.capacite=Math.round(rev*0.35*dur/(tm*Math.pow(1+tm,dur)/(Math.pow(1+tm,dur)-1)/rev));
+  fd.capacite=capacite;
 
-  // Update hidden fields
   document.getElementById('h_taux').value=taux+'%';
   document.getElementById('h_mens').value=Math.round(mens)+'€/mois';
-  document.getElementById('h_capa').value=Math.round(rev*0.35/(tm*Math.pow(1+tm,dur)/(Math.pow(1+tm,dur)-1)))+'€';
+  document.getElementById('h_capa').value=capacite+'€';
 
   const el=document.getElementById('tlVal');
   const fill=document.getElementById('tlFill');
-  if(el){
+  if(el && fill){
     el.textContent=taux+'%';
     const col=taux<=33?'var(--green)':taux<=35?'var(--gold)':'var(--red)';
     el.style.color=col;
@@ -703,133 +674,196 @@ function calcTaux(){
 
 function shake(id){
   const el=document.getElementById(id);
-  el.style.animation='none';el.offsetHeight;
+  el.style.animation='none';
+  el.offsetHeight;
   el.style.animation='shake .4s ease';
   setTimeout(()=>el.style.animation='',400);
 }
 
-function validateEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)}
+function validateEmail(e){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+}
+
+function gotoStep(target){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('s'+target).classList.add('active');
+  step=target;
+  updProg(step);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 
 function nxt(s){
   if(s===1){
     const pr=document.getElementById('prenom').value.trim();
     const no=document.getElementById('nom').value.trim();
     const em=document.getElementById('email').value.trim();
+
     document.getElementById('f-prenom').classList.toggle('error',!pr);
     document.getElementById('f-nom').classList.toggle('error',!no);
     document.getElementById('f-email').classList.toggle('error',!validateEmail(em));
-    if(!pr||!no||!validateEmail(em))return shake('s1');
-    fd.prenom=pr;fd.nom=no;fd.email=em;
-  }
-  if(s===2&&!fd.primo)return shake('s2');
-  if(s===3){
-    if(!fd.typeBien)return shake('s3');
-    const dept=document.getElementById('dept').value;
-    if(!dept)return shake('s3');
-    fd.dept=dept;
-    fd.budget=parseInt(document.getElementById('budget').value);
-  }
-  if(s===4&&!fd.statut)return shake('s4');
-  if(s===5){
-    fd.rev=parseInt(document.getElementById('rev').value);
-    calcRevN2();
-    fd.loyer=parseInt(document.getElementById('loyer').value);
-    calcTaux();
-  }
-  if(s===6){
-    fd.apport=parseInt(document.getElementById('apport').value);
-    fd.epargne=parseInt(document.getElementById('epargne').value);
-    calcTaux();
-  }
-  if(s===7){
-    fd.credits=parseInt(document.getElementById('credits').value);
-    calcTaux();
-  }
-  if(s===8&&!fd.incidents)return shake('s8');
-  if(s===10&&!fd.situation)return shake('s10');
-  if(s===11)buildRecap();
 
-  document.getElementById('s'+s).classList.remove('active');
-  step=s+1;
-  document.getElementById('s'+step).classList.add('active');
-  updProg(step);
-  window.scrollTo({top:0,behavior:'smooth'});
+    if(!pr||!no||!validateEmail(em)) return shake('s1');
+
+    fd.prenom=pr;
+    fd.nom=no;
+    fd.email=em;
+  }
+
+  if(s===2 && !fd.primo) return shake('s2');
+
+  if(s===3){
+    if(!fd.typeBien) return shake('s3');
+    const dept=document.getElementById('dept').value;
+    if(!dept) return shake('s3');
+    fd.dept=dept;
+    fd.budget=parseInt(document.getElementById('budget').value)||0;
+  }
+
+  if(s===4){
+    if(!fd.statut) return shake('s4');
+    const selected=fd.statut.split(',').filter(Boolean);
+    if(!document.getElementById('contrat').value) return shake('s4');
+    if(selected.length>=2 && !document.getElementById('contrat2').value) return shake('s4');
+  }
+
+  if(s===5){
+    fd.rev=parseInt(document.getElementById('rev').value)||0;
+    fd.loyer=parseInt(document.getElementById('loyer').value)||0;
+    calcRevN2();
+    calcTaux();
+  }
+
+  if(s===6){
+    fd.apport=parseInt(document.getElementById('apport').value)||0;
+    fd.epargne=parseInt(document.getElementById('epargne').value)||0;
+    calcTaux();
+  }
+
+  if(s===7){
+    fd.credits=parseInt(document.getElementById('credits').value)||0;
+    calcTaux();
+  }
+
+  if(s===8 && !fd.incidents) return shake('s8');
+  if(s===10 && !fd.situation) return shake('s10');
+
+  if(s===10){
+    buildRecap();
+  }
+
+  gotoStep(s+1);
 }
 
 function prv(s){
-  document.getElementById('s'+s).classList.remove('active');
-  step=s-1;
-  document.getElementById('s'+step).classList.add('active');
-  updProg(step);
-  window.scrollTo({top:0,behavior:'smooth'});
+  gotoStep(s-1);
 }
 
 function buildRecap(){
-  const profMap={salarie_prive:'Salarié du privé',militaire:'Militaire/Gendarme',fonctionnaire_etat:"Fonctionnaire d'État",enseignant:'Enseignant',hospitalier:'Personnel hospitalier',fonctionnaire_territorial:'Fonctionnaire territorial',agriculteur:'Agriculteur/MSA',btp:'BTP/Construction',independant:'Indépendant/TNS'};
+  const profMap={
+    salarie_prive:'Salarié du privé',
+    militaire:'Militaire/Gendarme',
+    fonctionnaire_etat:"Fonctionnaire d'État",
+    enseignant:'Enseignant',
+    hospitalier:'Personnel hospitalier',
+    fonctionnaire_territorial:'Fonctionnaire territorial',
+    agriculteur:'Agriculteur/MSA',
+    btp:'BTP/Construction',
+    independant:'Indépendant/TNS'
+  };
+
+  const typeBienMap={
+    neuf:'Neuf / VEFA',
+    ancien:'Ancien',
+    travaux:'Ancien + travaux',
+    locatif:'Investissement locatif'
+  };
+
+  const incidentsMap={
+    aucun:'Aucun',
+    decouvert:'Découverts ponctuels',
+    rejets:'Rejets de prélèvements',
+    fichage:'Fiché FICP / FCC'
+  };
+
+  const situationMap={
+    none:'Aucune',
+    handicap:'Handicap / RQTH',
+    mutation:'Mutation professionnelle',
+    jeune:'Moins de 30 ans',
+    donation:'Donation familiale prévue',
+    anru:'Zone ANRU / QPV'
+  };
+
   const getProfLabel=(s)=>s?s.split(',').map(k=>profMap[k]||k).join(' + '):'—';
+
   const items=[
-    ['Identité',`${fd.prenom||''} ${fd.nom||''} — ${fd.email||''}`],
-    ['Projet',`${fd.typeBien||'—'} · ${(fd.budget||0).toLocaleString('fr-FR')}€ · Dpt ${fd.dept||'—'}`],
+    ['Identité',`${document.getElementById('prenom').value.trim()} ${document.getElementById('nom').value.trim()} — ${document.getElementById('email').value.trim()}`],
+    ['Projet',`${typeBienMap[fd.typeBien]||fd.typeBien||'—'} · ${(fd.budget||0).toLocaleString('fr-FR')}€ · Dpt ${document.getElementById('dept').value||'—'}`],
     ['Profession',`${getProfLabel(fd.statut)}`],
     ['Revenus nets/mois',`${(fd.rev||0).toLocaleString('fr-FR')}€`],
     ['Revenus N-2',`${(fd.revN2||0).toLocaleString('fr-FR')}€/an`],
     ['Apport / Épargne',`${(fd.apport||0).toLocaleString('fr-FR')}€ / ${(fd.epargne||0).toLocaleString('fr-FR')}€`],
     ['Crédits en cours',`${(fd.credits||0).toLocaleString('fr-FR')}€/mois`],
-    ['Incidents bancaires',fd.incidents||'—'],
-    ['Taux d\'endettement estimé',`${fd.tauxEndettement||'—'}%`],
+    ['Incidents bancaires',incidentsMap[fd.incidents]||fd.incidents||'—'],
+    ['Taux d\'endettement estimé',`${fd.tauxEndettement||0}%`],
     ['Mensualité estimée',`${(fd.mensualite||0).toLocaleString('fr-FR')}€/mois`],
-    ['Situation',fd.situation||'—'],
+    ['Situation',situationMap[fd.situation]||fd.situation||'—']
   ];
-  document.getElementById('recapBox').innerHTML=items.map(([k,v])=>
+
+  document.getElementById('recapBox').innerHTML=items.map(([k,v]) =>
     `<div class="recap-row"><span class="recap-k">${k}</span><span class="recap-v">${v}</span></div>`
   ).join('');
 }
 
-function showDemoResult(){
+function finalValidate(){
+  const pr=document.getElementById('prenom').value.trim();
+  const no=document.getElementById('nom').value.trim();
+  const em=document.getElementById('email').value.trim();
+
+  if(!pr || !no || !validateEmail(em)){gotoStep(1);return false;}
+  if(!fd.primo){gotoStep(2);return false;}
+  if(!fd.typeBien || !document.getElementById('dept').value){gotoStep(3);return false;}
+  if(!fd.statut || !document.getElementById('contrat').value){gotoStep(4);return false;}
+  if(fd.statut.split(',').filter(Boolean).length>=2 && !document.getElementById('contrat2').value){gotoStep(4);return false;}
+  if(!fd.incidents){gotoStep(8);return false;}
+  if(!fd.situation){gotoStep(10);return false;}
+
+  fd.prenom=pr;
+  fd.nom=no;
+  fd.email=em;
+  fd.rev=parseInt(document.getElementById('rev').value)||0;
+  fd.budget=parseInt(document.getElementById('budget').value)||0;
+  fd.apport=parseInt(document.getElementById('apport').value)||0;
+  fd.epargne=parseInt(document.getElementById('epargne').value)||0;
+  fd.credits=parseInt(document.getElementById('credits').value)||0;
+
+  calcRevN2();
+  calcTaux();
+  buildRecap();
+
+  return true;
+}
+
+document.getElementById('mainForm').addEventListener('submit', function(e){
+  if(!finalValidate()){
+    e.preventDefault();
+    return;
+  }
+
   document.getElementById('fWrap').style.display='none';
+  document.getElementById('loadingScreen').classList.add('active');
   document.getElementById('pFill').style.width='100%';
   document.getElementById('pPct').textContent='100%';
-  document.getElementById('pLabel').textContent='Aperçu du diagnostic ✓';
+  document.getElementById('pLabel').textContent='Envoi en cours...';
+});
 
-  const profMap={salarie_prive:'Salarié du privé',militaire:'Militaire/Gendarme',fonctionnaire_etat:"Fonctionnaire d'État",enseignant:'Enseignant',hospitalier:'Personnel hospitalier',fonctionnaire_territorial:'Fonctionnaire territorial',agriculteur:'Agriculteur/MSA',btp:'BTP/Construction',independant:'Indépendant/TNS'};
-  const getProfLabel=(s)=>s?s.split(',').map(k=>profMap[k]||k).join(' + '):'—';
-  const cards=[
-    {ico:'👤',lbl:'Profil',txt:`${fd.prenom||'—'} ${fd.nom||''} · ${fd.primo==='oui'?'Primo-accédant':'Déjà propriétaire'}`},
-    {ico:'🏠',lbl:'Projet',txt:`${fd.typeBien||'—'} · ${(fd.budget||0).toLocaleString('fr-FR')}€ · Dpt ${fd.dept||'—'}`},
-    {ico:'💼',lbl:'Profession',txt:`${getProfLabel(fd.statut)}`},
-    {ico:'💰',lbl:'Finances',txt:`Revenus ${(fd.rev||0).toLocaleString('fr-FR')}€/mois · Apport ${(fd.apport||0).toLocaleString('fr-FR')}€`},
-    {ico:'🏦',lbl:'Taux d\'endettement estimé',txt:`${fd.tauxEndettement||'—'}% · Mensualité ~${(fd.mensualite||0).toLocaleString('fr-FR')}€/mois`},
-    {ico:'📋',lbl:'Votre rapport contiendra',txt:'Score éligibilité · Aides identifiées · Analyse bancaire · Fiscalité · Contacts · Plan d\'action'},
-  ];
-  const c=document.getElementById('rCards');
-  c.innerHTML='';
-  cards.forEach(card=>{
-    const d=document.createElement('div');
-    d.className='r-card';
-    d.innerHTML=`<div class="r-card-ico">${card.ico}</div><div class="r-card-txt"><div class="r-card-lbl">${card.lbl}</div><div>${card.txt}</div></div>`;
-    c.appendChild(d);
-  });
-  document.getElementById('resultScreen').classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function resetDemo(){
-  document.getElementById('resultScreen').classList.remove('active');
-  document.getElementById('fWrap').style.display='block';
-  // Retour étape 1
-  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
-  document.getElementById('s1').classList.add('active');
-  step=1;
-  updProg(1);
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-// Init
-updProg(1);
-calcTaux();
 document.getElementById('biensLocatifs').addEventListener('change',function(){
   document.getElementById('fLocatifDetail').style.display=this.value!=='non'?'block':'none';
 });
+
+updProg(1);
+calcRevN2();
+calcTaux();
 </script>
 </body>
 </html>
