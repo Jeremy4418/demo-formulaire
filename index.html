@@ -161,9 +161,9 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
 <!-- HEADER -->
 <div class="hdr">
   <div style="background:rgba(26,82,118,.15);border:1px solid rgba(26,82,118,.3);color:#5B9BD5;font-size:11px;font-weight:500;padding:6px 16px;border-radius:100px;display:inline-block;margin-bottom:16px;letter-spacing:.5px">👁️ MODE DÉMONSTRATION — Aperçu du formulaire</div>
-  <div class="badge">Diagnostic complet · Rapport sous 4h · 75€</div>
+  <div class="badge">Diagnostic complet · Rapport sous 24h · 75€</div>
   <h1>Optimisez votre<br><em>achat immobilier</em></h1>
-  <p class="subtitle">Analyse complète de vos aides, de votre viabilité bancaire et de votre fiscalité immobilière. Rapport PDF personnalisé envoyé sous 4 heures.</p>
+  <p class="subtitle">Analyse complète de vos aides, de votre viabilité bancaire et de votre fiscalité immobilière. Rapport PDF personnalisé envoyé sous 24 heures.</p>
   <div class="stats">
     <div class="stat"><span class="stat-v">23 000€</span><span class="stat-l">Économie moyenne</span></div>
     <div class="stat"><span class="stat-v">60+</span><span class="stat-l">Aides analysées</span></div>
@@ -260,10 +260,16 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
     <div class="pch" data-v="hospitalier" onclick="selP(this)"><span class="pico">🏥</span><span class="plbl">Personnel hospitalier</span><span class="psub">MNH assurance réduite</span><span class="pbdg">Spécial</span></div>
     <div class="pch" data-v="fonctionnaire_territorial" onclick="selP(this)"><span class="pico">🏘️</span><span class="plbl">Fonct. territorial</span><span class="psub">Mairie, département</span><span class="pbdg">Taux réduits</span></div>
     <div class="pch" data-v="agriculteur" onclick="selP(this)"><span class="pico">🌾</span><span class="plbl">Agriculteur / MSA</span><span class="psub">Prêts MSA, Bpifrance</span><span class="pbdg">Spécial</span></div>
+    <div class="pch" data-v="btp" onclick="selP(this)"><span class="pico">🏗️</span><span class="plbl">BTP / Construction</span><span class="psub">ProBTP, Action Logement</span><span class="pbdg">Spécial</span></div>
     <div class="pch" data-v="independant" onclick="selP(this)"><span class="pico">⚡</span><span class="plbl">Indépendant / TNS</span><span class="psub">Auto-entrepreneur, gérant</span></div>
   </div>
-  <div class="row2" style="margin-top:14px">
-    <div class="field"><label>Type de contrat <span>*</span></label>
+  <div style="font-size:11px;color:var(--gold);margin-top:6px;margin-bottom:2px;letter-spacing:.5px">
+    💡 Foyer avec 2 métiers différents ? Sélectionnez les deux — les aides se cumulent !
+  </div>
+
+  <!-- Contrat emprunteur 1 — toujours visible -->
+  <div class="row2" style="margin-top:14px" id="contratBlock1">
+    <div class="field"><label id="contratLbl1">Type de contrat <span>*</span></label>
       <select name="contrat" id="contrat">
         <option value="">Sélectionner...</option>
         <option value="cdi">CDI / Titulaire</option>
@@ -274,8 +280,31 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
         <option value="retraite">Retraité</option>
       </select>
     </div>
-    <div class="field"><label>Ancienneté actuelle</label>
+    <div class="field"><label id="anciennLbl1">Ancienneté</label>
       <select name="anciennete" id="anciennete">
+        <option value="moins1">Moins de 1 an</option>
+        <option value="1a3">1 à 3 ans</option>
+        <option value="3a5">3 à 5 ans</option>
+        <option value="plus5">Plus de 5 ans</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Contrat emprunteur 2 — visible si 2 professions sélectionnées -->
+  <div class="row2" style="margin-top:8px;display:none" id="contratBlock2">
+    <div class="field"><label id="contratLbl2">Type de contrat — Co-emprunteur <span>*</span></label>
+      <select name="contrat2" id="contrat2">
+        <option value="">Sélectionner...</option>
+        <option value="cdi">CDI / Titulaire</option>
+        <option value="cdd">CDD</option>
+        <option value="interim">Intérim</option>
+        <option value="tns_3ans">Indépendant + 3 ans</option>
+        <option value="tns_jeune">Indépendant - 3 ans</option>
+        <option value="retraite">Retraité</option>
+      </select>
+    </div>
+    <div class="field"><label>Ancienneté — Co-emprunteur</label>
+      <select name="anciennete2" id="anciennete2">
         <option value="moins1">Moins de 1 an</option>
         <option value="1a3">1 à 3 ans</option>
         <option value="3a5">3 à 5 ans</option>
@@ -299,17 +328,9 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
       <div class="rng-lbl"><span>800€</span><span>15 000€</span></div>
     </div>
   </div>
-  <div class="field">
-    <label>Revenus annuels N-2 <span>*</span><small>(ligne 25 avis d'imposition)</small></label>
-    <div class="rng-wrap">
-      <div class="rng-val" id="revN2V">30 000 <span>€ / an</span></div>
-      <input type="range" name="revenus_n2" id="revN2" min="10000" max="150000" step="500" value="30000" oninput="updR('revN2','revN2V','€ / an')">
-      <div class="rng-lbl"><span>10 000€</span><span>150 000€</span></div>
-    </div>
-  </div>
   <div class="row2">
     <div class="field"><label>Foyer</label>
-      <select name="foyer" id="foyer">
+      <select name="foyer" id="foyer" onchange="updEmprunteurs()">
         <option value="1">1 personne</option>
         <option value="2" selected>2 personnes</option>
         <option value="3">3-4 personnes</option>
@@ -324,6 +345,27 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
       </select>
     </div>
   </div>
+
+  <!-- Revenus N-2 dynamique selon nb emprunteurs -->
+  <div id="revN2Block">
+    <div class="field" id="revN2Field1">
+      <label>Revenus annuels N-2 — Emprunteur 1 <span>*</span><small>(ligne 25 avis d'imposition)</small></label>
+      <div class="rng-wrap">
+        <div class="rng-val" id="revN2V1">30 000 <span>€ / an</span></div>
+        <input type="range" name="revenus_n2_1" id="revN2_1" min="10000" max="150000" step="500" value="30000" oninput="updR('revN2_1','revN2V1','€ / an');calcRevN2()">
+        <div class="rng-lbl"><span>10 000€</span><span>150 000€</span></div>
+      </div>
+    </div>
+    <div class="field" id="revN2Field2" style="display:block">
+      <label>Revenus annuels N-2 — Emprunteur 2 <span>*</span><small>(ligne 25 avis d'imposition)</small></label>
+      <div class="rng-wrap">
+        <div class="rng-val" id="revN2V2">30 000 <span>€ / an</span></div>
+        <input type="range" name="revenus_n2_2" id="revN2_2" min="0" max="150000" step="500" value="30000" oninput="updR('revN2_2','revN2V2','€ / an');calcRevN2()">
+        <div class="rng-lbl"><span>0€</span><span>150 000€</span></div>
+      </div>
+    </div>
+  </div>
+
   <div class="field">
     <label>Loyer actuel <small>(sera libéré à l'achat)</small></label>
     <div class="rng-wrap">
@@ -520,7 +562,7 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
 <div class="result" id="resultScreen">
   <div class="r-icon">👁️</div>
   <div class="r-title">Aperçu du diagnostic</div>
-  <p class="r-sub">Voici un résumé de ce que vous avez renseigné. Votre rapport complet et personnalisé sera généré et envoyé par email sous 4 heures après paiement.</p>
+  <p class="r-sub">Voici un résumé de ce que vous avez renseigné. Votre rapport complet et personnalisé sera généré et envoyé par email sous 24 heures après paiement.</p>
   <div class="r-cards" id="rCards"></div>
 
   <div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.25);border-radius:8px;padding:22px;margin-bottom:16px;text-align:center">
@@ -534,7 +576,7 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
       ✓ Plan d'action personnalisé en 5 étapes
     </div>
     <div style="font-size:36px;font-weight:500;color:var(--gold);font-family:'Playfair Display',serif;margin-bottom:4px">75€</div>
-    <div style="font-size:12px;color:var(--muted);margin-bottom:18px">Paiement unique · PDF livré sous 4h · Satisfait ou remboursé 48h</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:18px">Paiement unique · PDF livré sous 24h · Satisfait ou remboursé 48h</div>
     <a href="https://buy.stripe.com/bJedR932l4x65WK5v66Ri00" style="display:block;background:var(--gold);color:var(--dark);border-radius:4px;padding:14px 24px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;text-decoration:none;letter-spacing:.3px">Payer et recevoir mon rapport →</a>
     <div style="font-size:11px;color:var(--muted);margin-top:10px">Paiement sécurisé via Stripe · CB, Apple Pay, Google Pay</div>
   </div>
@@ -548,7 +590,7 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
   <div class="ti">IOBSP Certifié Niveau I</div>
   <div class="ti">Fiscalité immobilière</div>
   <div class="ti">60+ aides analysées</div>
-  <div class="ti">Rapport sous 4h</div>
+  <div class="ti">Rapport sous 24h</div>
   <div class="ti">SIRET 91128258000024</div>
 </div>
 
@@ -558,6 +600,28 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 8px rgba(201,168,
 const TOTAL=11;
 let step=1;
 let fd={budget:180000,rev:2500,revN2:30000,apport:20000,epargne:5000,credits:0,capital:0,loyer:600};
+
+function updEmprunteurs(){
+  const nb=parseInt(document.getElementById('foyer').value)||1;
+  const f2=document.getElementById('revN2Field2');
+  const lbl1=document.querySelector('#revN2Field1 label');
+  if(nb>=2){
+    f2.style.display='block';
+    lbl1.innerHTML='Revenus annuels N-2 — Emprunteur 1 <span>*</span><small>(ligne 25 avis d\'imposition)</small>';
+  } else {
+    f2.style.display='none';
+    lbl1.innerHTML='Revenus annuels N-2 <span>*</span><small>(ligne 25 avis d\'imposition)</small>';
+    document.getElementById('revN2_2').value=0;
+    document.getElementById('revN2V2').innerHTML='0 <span>€ / an</span>';
+  }
+  calcRevN2();
+}
+
+function calcRevN2(){
+  const v1=parseInt(document.getElementById('revN2_1').value)||0;
+  const v2=parseInt(document.getElementById('revN2_2').value)||0;
+  fd.revN2=v1+v2;
+}
 
 function updProg(s){
   const p=Math.round(s/TOTAL*100);
@@ -583,12 +647,27 @@ function sel(gId,el){
 }
 
 function selP(el){
-  document.querySelectorAll('.pch').forEach(c=>c.classList.remove('sel'));
-  el.classList.add('sel');
-  fd.statut=el.dataset.v;
+  el.classList.toggle('sel');
+  const selected=Array.from(document.querySelectorAll('.pch.sel')).map(c=>c.dataset.v);
+  fd.statut=selected.join(',');
   let inp=document.querySelector('input[name="statut"]');
   if(!inp){inp=document.createElement('input');inp.type='hidden';inp.name='statut';document.getElementById('mainForm').appendChild(inp);}
-  inp.value=el.dataset.v;
+  inp.value=fd.statut;
+
+  // Afficher/masquer bloc contrat co-emprunteur selon nb professions
+  const nb=selected.length;
+  const bloc2=document.getElementById('contratBlock2');
+  const lbl1=document.getElementById('contratLbl1');
+  const anc1=document.getElementById('anciennLbl1');
+  if(nb>=2){
+    bloc2.style.display='flex';
+    lbl1.innerHTML='Type de contrat — Emprunteur 1 <span>*</span>';
+    anc1.textContent='Ancienneté — Emprunteur 1';
+  } else {
+    bloc2.style.display='none';
+    lbl1.innerHTML='Type de contrat <span>*</span>';
+    anc1.textContent='Ancienneté actuelle';
+  }
 }
 
 function calcTaux(){
@@ -653,7 +732,7 @@ function nxt(s){
   if(s===4&&!fd.statut)return shake('s4');
   if(s===5){
     fd.rev=parseInt(document.getElementById('rev').value);
-    fd.revN2=parseInt(document.getElementById('revN2').value);
+    calcRevN2();
     fd.loyer=parseInt(document.getElementById('loyer').value);
     calcTaux();
   }
@@ -686,11 +765,12 @@ function prv(s){
 }
 
 function buildRecap(){
-  const profMap={salarie_prive:'Salarié du privé',militaire:'Militaire/Gendarme',fonctionnaire_etat:"Fonctionnaire d'État",enseignant:'Enseignant',hospitalier:'Personnel hospitalier',fonctionnaire_territorial:'Fonctionnaire territorial',agriculteur:'Agriculteur/MSA',independant:'Indépendant/TNS'};
+  const profMap={salarie_prive:'Salarié du privé',militaire:'Militaire/Gendarme',fonctionnaire_etat:"Fonctionnaire d'État",enseignant:'Enseignant',hospitalier:'Personnel hospitalier',fonctionnaire_territorial:'Fonctionnaire territorial',agriculteur:'Agriculteur/MSA',btp:'BTP/Construction',independant:'Indépendant/TNS'};
+  const getProfLabel=(s)=>s?s.split(',').map(k=>profMap[k]||k).join(' + '):'—';
   const items=[
     ['Identité',`${fd.prenom||''} ${fd.nom||''} — ${fd.email||''}`],
     ['Projet',`${fd.typeBien||'—'} · ${(fd.budget||0).toLocaleString('fr-FR')}€ · Dpt ${fd.dept||'—'}`],
-    ['Profession',`${profMap[fd.statut]||'—'}`],
+    ['Profession',`${getProfLabel(fd.statut)}`],
     ['Revenus nets/mois',`${(fd.rev||0).toLocaleString('fr-FR')}€`],
     ['Revenus N-2',`${(fd.revN2||0).toLocaleString('fr-FR')}€/an`],
     ['Apport / Épargne',`${(fd.apport||0).toLocaleString('fr-FR')}€ / ${(fd.epargne||0).toLocaleString('fr-FR')}€`],
@@ -711,11 +791,12 @@ function showDemoResult(){
   document.getElementById('pPct').textContent='100%';
   document.getElementById('pLabel').textContent='Aperçu du diagnostic ✓';
 
-  const profMap={salarie_prive:'Salarié du privé',militaire:'Militaire/Gendarme',fonctionnaire_etat:"Fonctionnaire d'État",enseignant:'Enseignant',hospitalier:'Personnel hospitalier',fonctionnaire_territorial:'Fonctionnaire territorial',agriculteur:'Agriculteur/MSA',independant:'Indépendant/TNS'};
+  const profMap={salarie_prive:'Salarié du privé',militaire:'Militaire/Gendarme',fonctionnaire_etat:"Fonctionnaire d'État",enseignant:'Enseignant',hospitalier:'Personnel hospitalier',fonctionnaire_territorial:'Fonctionnaire territorial',agriculteur:'Agriculteur/MSA',btp:'BTP/Construction',independant:'Indépendant/TNS'};
+  const getProfLabel=(s)=>s?s.split(',').map(k=>profMap[k]||k).join(' + '):'—';
   const cards=[
     {ico:'👤',lbl:'Profil',txt:`${fd.prenom||'—'} ${fd.nom||''} · ${fd.primo==='oui'?'Primo-accédant':'Déjà propriétaire'}`},
     {ico:'🏠',lbl:'Projet',txt:`${fd.typeBien||'—'} · ${(fd.budget||0).toLocaleString('fr-FR')}€ · Dpt ${fd.dept||'—'}`},
-    {ico:'💼',lbl:'Profession',txt:`${profMap[fd.statut]||'—'}`},
+    {ico:'💼',lbl:'Profession',txt:`${getProfLabel(fd.statut)}`},
     {ico:'💰',lbl:'Finances',txt:`Revenus ${(fd.rev||0).toLocaleString('fr-FR')}€/mois · Apport ${(fd.apport||0).toLocaleString('fr-FR')}€`},
     {ico:'🏦',lbl:'Taux d\'endettement estimé',txt:`${fd.tauxEndettement||'—'}% · Mensualité ~${(fd.mensualite||0).toLocaleString('fr-FR')}€/mois`},
     {ico:'📋',lbl:'Votre rapport contiendra',txt:'Score éligibilité · Aides identifiées · Analyse bancaire · Fiscalité · Contacts · Plan d\'action'},
